@@ -1,5 +1,5 @@
 # IDriveForLinux
-IDriveForLinux Docker container on arm64 for ubuntu.
+IDriveForLinux Docker container on ~~arm64 for ubuntu~~ amd64 for Unraid.
 
 ## Environment variables
 
