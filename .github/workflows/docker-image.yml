@@ -8,11 +8,21 @@ on:
 
 jobs:
 
-  build:
+  build-and-push:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:${{ github.run_number }}
+      
+      - name: Log in to GitHub Container Registry
+        run : echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      
+      - name : Push the image to GitHub Container Registry
+        run : docker tag idriveforlinux:${{ github.run_number }} ghcr.io/${{ github.repository_owner }}/idriveforlinux:${{ github.run_number }}
+
+      - name: Push using token authentication
+      # Push the image to GitHub Container Registry using token authentication.
+        run : docker push ghcr.io/${{github.repository_owner}}/idriveforlinux:${GITHUB_RUN_NUMBER}
