@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64/v8 ubuntu:latest
+FROM --platform=linux/amd64/v3 ubuntu:latest
 
 # Update, upgrade, and install dependencies.
 RUN apt-get update && \
