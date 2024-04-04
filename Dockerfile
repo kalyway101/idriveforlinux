@@ -6,8 +6,8 @@ RUN apt-get update && \
     apt-get install -y curl cron libexpat1 expect vim
 
 # Add missing libssl dependency.
-ADD http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb /tmp/
-RUN dpkg -i /tmp/libssl1.1_1.1.1f-1ubuntu2_arm64.deb
+ADD http://ports.ubuntu.com/pool/main/o/openssl/libssl-dev_3.0.2-0ubuntu1.15_amd64.deb /tmp/
+RUN dpkg -i /tmp/libssl-dev_3.0.2-0ubuntu1.15_amd64.deb
 
 # Download idriveforlinux.bin file.
 ADD https://www.idrivedownloads.com/downloads/linux/download-for-linux/linux-bin/idriveforlinux.bin /tmp/
